@@ -495,6 +495,23 @@ describe("publish", () => {
       await runWrangler("publish ./index");
     });
 
+    it("should publish with an empty string route", async () => {
+      writeWranglerToml({
+        route: "",
+      });
+      writeWorkerSource();
+      mockUpdateWorkerRequest({ enabled: false });
+      mockUploadWorkerRequest({ expectedType: "esm" });
+      mockSubDomainRequest();
+      mockPublishRoutesRequest({ routes: [""] });
+      await runWrangler("publish ./index");
+      expect(std.warn).toMatchInlineSnapshot(`
+        "[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mRoute/s is being set as an empty string[0m
+
+        "
+      `);
+    });
+
     it("should publish to a route with a pattern/{zone_id|zone_name} combo", async () => {
       writeWranglerToml({
         routes: [

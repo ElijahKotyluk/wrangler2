@@ -236,8 +236,12 @@ export default async function publish(props: Props): Promise<void> {
     Or you could pass it in your terminal as \`--compatibility-date ${compatibilityDateStr}\`
 See https://developers.cloudflare.com/workers/platform/compatibility-dates for more information.`);
   }
-
   const triggers = props.triggers || config.triggers?.crons;
+
+  if (config.route === "") {
+    logger.warn("Route/s is being set as an empty string");
+  }
+  // The empty string gets swallowed by the ternary default to an empty array
   const routes =
     props.routes ?? config.routes ?? (config.route ? [config.route] : []) ?? [];
   const routesOnly: Array<Route> = [];

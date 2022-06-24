@@ -637,7 +637,7 @@ function normalizeAndValidateModulePaths(
  * or an object that looks like {pattern: string, zone_id: string }
  */
 function isValidRouteValue(item: unknown): boolean {
-  if (!item) {
+  if (!item && item !== "") {
     return false;
   }
   if (typeof item === "string") {
