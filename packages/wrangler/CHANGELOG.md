@@ -1,5 +1,48 @@
 # wrangler
 
+## 2.0.16
+
+### Patch Changes
+
+- [#1337](https://github.com/cloudflare/wrangler2/pull/1337) [`1d778ae`](https://github.com/cloudflare/wrangler2/commit/1d778ae16c432166b39dd6435a4bab49a2248e06) Thanks [@JacobMGEvans](https://github.com/JacobMGEvans)! - polish: bundle reporter was not printing during publish errors
+
+  The reporter is now called before the publish API call, printing every time.
+
+  resolves #1328
+
+* [#1335](https://github.com/cloudflare/wrangler2/pull/1335) [`49cf17e`](https://github.com/cloudflare/wrangler2/commit/49cf17e6e605f2b446fea01d158d7ddee49a22b9) Thanks [@JacobMGEvans](https://github.com/JacobMGEvans)! - feat: resolve `--assets` cli arg relative to current working directory
+
+  Before we were resolving the Asset directory relative to the location of `wrangler.toml` at all times.
+  Now the `--assets` cli arg is resolved relative to current working directory.
+
+  resolves #1333
+
+- [#1342](https://github.com/cloudflare/wrangler2/pull/1342) [`6426625`](https://github.com/cloudflare/wrangler2/commit/6426625805a9e9ce37029454e37bb3dd7d05837c) Thanks [@rozenmd](https://github.com/rozenmd)! - polish: split dev function out of index.tsx
+
+* [#1344](https://github.com/cloudflare/wrangler2/pull/1344) [`7ba19fe`](https://github.com/cloudflare/wrangler2/commit/7ba19fe925f6de5acddf94bb065b19245cc5b887) Thanks [@rozenmd](https://github.com/rozenmd)! - polish: move init into its own file
+
+- [#1278](https://github.com/cloudflare/wrangler2/pull/1278) [`8201733`](https://github.com/cloudflare/wrangler2/commit/820173330031acda5d2cd5c1b7bca58209a6ddff) Thanks [@Maximo-Guk](https://github.com/Maximo-Guk)! - Throw error if user attempts to use config with pages
+
+* [#1348](https://github.com/cloudflare/wrangler2/pull/1348) [`eb948b0`](https://github.com/cloudflare/wrangler2/commit/eb948b09930b3a0a39cd66638cc36e61c73fef55) Thanks [@threepointone](https://github.com/threepointone)! - polish: add an experimental warning if `--assets` is used
+
+  We already have a warning when `config.assets` is used, this adds it for the cli argument as well.
+
+- [#1326](https://github.com/cloudflare/wrangler2/pull/1326) [`12f2703`](https://github.com/cloudflare/wrangler2/commit/12f2703c5130524f95df823dc30358ad51584759) Thanks [@timabb031](https://github.com/timabb031)! - fix: show console.error/console.warn logs when using `dev --local`.
+
+  Prior to this change, logging with console.error/console.warn in a Worker wouldn't output anything to the console when running in local mode. This was happening because stderr data event handler was being removed after the `Debugger listening...` string was found.
+
+  This change updates the stderr data event handler to forward on all events to `process.stderr`.
+
+  Closes #1324
+
+* [#1343](https://github.com/cloudflare/wrangler2/pull/1343) [`59a83f8`](https://github.com/cloudflare/wrangler2/commit/59a83f8ff4fc1bffcf049ad4795d3539d25f9eb8) Thanks [@rozenmd](https://github.com/rozenmd)! - polish: split generate into its own file
+
+- [`4ad084e`](https://github.com/cloudflare/wrangler2/commit/4ad084ef093e39eca4752c615bf19e6479ae448c) Thanks [@sbquinlan](https://github.com/sbquinlan)! - feature By @sbquinlan: Set "upstream" miniflare option when running dev in local mode
+
+* [#1274](https://github.com/cloudflare/wrangler2/pull/1274) [`5cc0772`](https://github.com/cloudflare/wrangler2/commit/5cc0772bb8c358c0f39085077ff676dc6738efd3) Thanks [@Maximo-Guk](https://github.com/Maximo-Guk)! - Added .dev.vars support for pages
+
+- [#1349](https://github.com/cloudflare/wrangler2/pull/1349) [`ef9dac8`](https://github.com/cloudflare/wrangler2/commit/ef9dac84d4b4c54d0a7d7df002ae8f0117ef0400) Thanks [@rozenmd](https://github.com/rozenmd)! - polish: move preview into its own file
+
 ## 2.0.15
 
 ### Patch Changes
