@@ -3,6 +3,9 @@ import { ParseError } from "../parse";
 import { fetchInternal } from "./internal";
 import type { RequestInit } from "undici";
 
+// Logger
+import { logger } from "../logger";
+
 // Check out https://api.cloudflare.com/ for API docs.
 
 export { getCloudflareAPIBaseURL as getCloudflareApiBaseUrl } from "./internal";
